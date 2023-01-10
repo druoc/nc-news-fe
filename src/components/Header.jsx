@@ -1,7 +1,10 @@
+import { Typography } from 'antd';
+
 const Header = () => {
+	const { Title } = Typography;
 	return (
 		<header className="header">
-			<h1>NC News</h1>
+			<Title level={1}>NC News</Title>
 		</header>
 	);
 };
