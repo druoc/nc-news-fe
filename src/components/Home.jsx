@@ -1,7 +1,9 @@
+import { Typography } from 'antd';
 const Home = () => {
+	const { Title } = Typography;
 	return (
 		<div className="home">
-			<h3>Hello, welcome to NC news!</h3>
+			<Title level={3}>Hello, welcome to NC News!</Title>
 		</div>
 	);
 };
