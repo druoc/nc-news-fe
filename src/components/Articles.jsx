@@ -1,10 +1,13 @@
-import { useState } from 'react';
 import ArticleCard from './ArticleCard';
 import { Typography, Space } from 'antd';
+import { Bars } from 'react-loading-icons';
 
-const Articles = ({ articles }) => {
+const Articles = ({ articles, isLoading }) => {
 	const { Title } = Typography;
-	const [isLoading, setIsLoading] = useState(false);
+
+	if (isLoading) {
+		return <Bars />;
+	}
 	return (
 		<section className="articles-section">
 			<Title level={3}>Listing articles:</Title>
