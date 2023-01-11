@@ -7,3 +7,15 @@ export const getArticles = () => {
 			return result.data.articles;
 		});
 };
+
+export const getArticleById = (article_id) => {
+	return axios
+		.get(`https://nc-news-lwqn.onrender.com/api/articles/${article_id}`)
+		.then((result) => {
+			return result;
+		});
+};
+
+export const convertDate = (date) => {
+	return date.slice(0, 10);
+};
