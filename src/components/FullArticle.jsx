@@ -1,17 +1,25 @@
 import { Card, Button, Space } from 'antd';
-import { getArticleById } from '../utils/api';
+import {
+	getArticleById,
+	getArticleComments,
+	updateArticleVote,
+} from '../utils/api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loading-icons';
-import { getArticleComments } from '../utils/api';
+
 import CommentCard from './CommentCard';
 
 const FullArticle = () => {
+	//state variables
 	const { article_id } = useParams();
 	const [article, setArticle] = useState({});
 	const [articleIsLoading, setArticleIsLoading] = useState(true);
 	const [comments, setComments] = useState([]);
+	const [optimisticVote, setOptimisticVote] = useState(0);
+	const [error, setError] = useState('');
 
+	//useEffect hooks
 	useEffect(() => {
 		setArticleIsLoading(true);
 		getArticleById(article_id).then((response) => {
@@ -26,6 +34,35 @@ const FullArticle = () => {
 		});
 	}, [setComments, article_id]);
 
+	//event handler functions
+	const upVoteArticle = () => {
+		let count = 0;
+		count++;
+		updateArticleVote(article_id, count)
+			.then(() => {
+				setOptimisticVote(optimisticVote + 1);
+			})
+			.catch((err) => {
+				if (err.response) {
+					setError('Something went wrong...');
+				}
+			});
+	};
+
+	const downVoteArticle = () => {
+		let count = 0;
+		count--;
+		updateArticleVote(article_id, count)
+			.then(() => {
+				setOptimisticVote(optimisticVote - 1);
+			})
+			.catch((err) => {
+				if (err.response) {
+					setError('Something went wrong...');
+				}
+			});
+	};
+
 	if (articleIsLoading) {
 		return <TailSpin />;
 	}
@@ -37,10 +74,13 @@ const FullArticle = () => {
 					<strong>
 						<p>by {article.author}</p>
 					</strong>
-					<p>Votes: {article.votes}</p>
+					<p>Votes: {article.votes + optimisticVote}</p>
 					<Space>
-						<Button type="primary">Vote +</Button>
-						<Button>Vote -</Button>
+						<Button type="primary" onClick={upVoteArticle}>
+							Vote +
+						</Button>
+						<Button onClick={downVoteArticle}>Vote -</Button>
+						<span style={{ color: 'red' }}>{error}</span>
 					</Space>
 				</Card>
 			</section>

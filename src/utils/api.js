@@ -29,3 +29,10 @@ export const getArticleComments = (article_id) => {
 			return result.data;
 		});
 };
+
+export const updateArticleVote = (article_id, vote) => {
+	return axios.put(
+		`https://nc-news-lwqn.onrender.com/api/articles/${article_id}`,
+		{ inc_votes: vote }
+	);
+};

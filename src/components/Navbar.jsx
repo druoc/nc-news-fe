@@ -1,25 +1,28 @@
 import { Link } from 'react-router-dom';
+import { Button, Space } from 'antd';
 
 const Navbar = () => {
 	return (
 		<nav className="navbar">
-			<ul>
-				<li>
+			<Space
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					marginBottom: '20px',
+				}}
+			>
+				<Button>
 					<Link to="/" className="nav-links">
 						Home
 					</Link>
-				</li>
-				<li>
+				</Button>
+
+				<Button>
 					<Link to="articles" className="nav-links">
 						Articles
 					</Link>
-				</li>
-				<li>
-					<Link to="users" className="nav-links">
-						Users
-					</Link>
-				</li>
-			</ul>
+				</Button>
+			</Space>
 		</nav>
 	);
 };
