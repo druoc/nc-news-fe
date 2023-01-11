@@ -3,21 +3,30 @@ import { getArticleById } from '../utils/api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loading-icons';
+import { getArticleComments } from '../utils/api';
+import CommentCard from './CommentCard';
 
 const FullArticle = () => {
 	const { article_id } = useParams();
 	const [article, setArticle] = useState({});
-	const [isLoading, setIsLoading] = useState(true);
+	const [articleIsLoading, setArticleIsLoading] = useState(true);
+	const [comments, setComments] = useState([]);
 
 	useEffect(() => {
-		setIsLoading(true);
+		setArticleIsLoading(true);
 		getArticleById(article_id).then((response) => {
 			setArticle(response.data);
-			setIsLoading(false);
+			setArticleIsLoading(false);
 		});
 	}, [setArticle, article_id]);
 
-	if (isLoading) {
+	useEffect(() => {
+		getArticleComments(article_id).then((response) => {
+			setComments(response);
+		});
+	}, [setComments, article_id]);
+
+	if (articleIsLoading) {
 		return <TailSpin />;
 	}
 	return (
@@ -34,6 +43,21 @@ const FullArticle = () => {
 						<Button>Vote -</Button>
 					</Space>
 				</Card>
+			</section>
+
+			<section className="section-comments-section">
+				<Space
+					size="middle"
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+					}}
+					wrap
+				>
+					{comments.map((comment) => {
+						return <CommentCard key={comment.comment_id} comment={comment} />;
+					})}
+				</Space>
 			</section>
 		</>
 	);
