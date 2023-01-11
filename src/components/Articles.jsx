@@ -2,10 +2,10 @@ import ArticleCard from './ArticleCard';
 import { Typography, Space } from 'antd';
 import { Bars } from 'react-loading-icons';
 
-const Articles = ({ articles, isLoading }) => {
+const Articles = ({ articles, articlesLoading }) => {
 	const { Title } = Typography;
 
-	if (isLoading) {
+	if (articlesLoading) {
 		return <Bars />;
 	}
 	return (

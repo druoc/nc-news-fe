@@ -10,13 +10,13 @@ import Users from './components/Users';
 
 const App = () => {
 	const [articles, setArticles] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
+	const [articlesLoading, setArticlesLoading] = useState(true);
 
 	useEffect(() => {
-		setIsLoading(true);
+		setArticlesLoading(true);
 		getArticles().then((usersFromApi) => {
 			setArticles(usersFromApi);
-			setIsLoading(false);
+			setArticlesLoading(false);
 		});
 	}, [setArticles]);
 
@@ -28,7 +28,9 @@ const App = () => {
 				<Route path="/" element={<Home />} />
 				<Route
 					path="articles"
-					element={<Articles articles={articles} isLoading={isLoading} />}
+					element={
+						<Articles articles={articles} articlesLoading={articlesLoading} />
+					}
 				/>
 				<Route path="articles/:article_id" element={<FullArticle />} />
 				<Route path="users" element={<Users />} />
