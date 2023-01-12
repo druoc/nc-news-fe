@@ -36,3 +36,14 @@ export const updateArticleVote = (article_id, vote) => {
 		{ inc_votes: vote }
 	);
 };
+
+export const postArticleComment = (article_id, username, body) => {
+	return axios
+		.post(
+			`https://nc-news-lwqn.onrender.com/api/articles/${article_id}/comments`,
+			{ username: username, body: body }
+		)
+		.then((result) => {
+			return result.data[0];
+		});
+};
