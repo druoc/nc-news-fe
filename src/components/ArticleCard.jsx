@@ -7,7 +7,11 @@ const ArticleCard = ({ article }) => {
 
 	return (
 		<div className="article-card">
-			<Card title={article.title} bordered={true} style={{ width: 500 }}>
+			<Card
+				title={article.title}
+				bordered={true}
+				style={{ width: 500, maxWidth: '90vw' }}
+			>
 				<Button type="default">
 					<Link to={`/articles/${article.article_id}`}>
 						Read full article...

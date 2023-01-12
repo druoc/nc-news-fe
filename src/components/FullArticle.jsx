@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loading-icons';
 
 import CommentCard from './CommentCard';
+import SubmitComment from './SubmitComment';
 
 const FullArticle = () => {
 	//state variables
@@ -18,6 +19,8 @@ const FullArticle = () => {
 	const [comments, setComments] = useState([]);
 	const [optimisticVote, setOptimisticVote] = useState(0);
 	const [error, setError] = useState('');
+	const [postedComment, setPostedComment] = useState({});
+	const username = 'cooljmessy';
 
 	//useEffect hooks
 	useEffect(() => {
@@ -86,6 +89,12 @@ const FullArticle = () => {
 			</section>
 
 			<section className="section-comments-section">
+				<SubmitComment
+					username={username}
+					article_id={article_id}
+					postedComment={postedComment}
+					setPostedComment={setPostedComment}
+				/>
 				<Space
 					size="middle"
 					style={{

@@ -9,7 +9,7 @@ const CommentCard = ({ comment }) => {
 				comment.created_at
 			)}`}
 			bordered={true}
-			style={{ width: 500, maxWidth: '90vw' }}
+			style={{ width: '500px', maxWidth: '75vw' }}
 		>
 			<p>{comment.body}</p>
 			<span>
