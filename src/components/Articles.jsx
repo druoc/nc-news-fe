@@ -10,7 +10,12 @@ const Articles = ({ articles, articlesLoading }) => {
 	}
 	return (
 		<section className="articles-section">
-			<Title level={3}>Listing articles:</Title>
+			<Title
+				level={3}
+				style={{ display: 'flex', justifyContent: 'center', color: '#fff' }}
+			>
+				Listing articles:
+			</Title>
 			<div className="articles-container">
 				<Space
 					size="middle"

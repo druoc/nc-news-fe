@@ -3,7 +3,13 @@ const Home = () => {
 	const { Title } = Typography;
 	return (
 		<div className="home">
-			<Title level={3}>Hello, welcome to NC News!</Title>
+			<Title
+				className="home-header"
+				level={3}
+				style={{ display: 'flex', justifyContent: 'center', color: '#fff' }}
+			>
+				Hello, welcome to NC News!
+			</Title>
 		</div>
 	);
 };

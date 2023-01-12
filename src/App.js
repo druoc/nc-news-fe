@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Articles from './components/Articles';
 import FullArticle from './components/FullArticle';
-import Users from './components/Users';
 
 const App = () => {
 	const [articles, setArticles] = useState([]);
@@ -33,7 +32,6 @@ const App = () => {
 					}
 				/>
 				<Route path="articles/:article_id" element={<FullArticle />} />
-				<Route path="users" element={<Users />} />
 			</Routes>
 		</main>
 	);
