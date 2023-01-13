@@ -6,7 +6,6 @@ const SubmitComment = ({ article_id, username }) => {
 	const { TextArea } = Input;
 	const { Title } = Typography;
 	const [commentText, setCommentText] = useState('');
-	const [postResponse, setPostResponse] = useState([]);
 
 	const [commentError, setCommentError] = useState('');
 	const [commentSuccess, setCommentSuccess] = useState('');
@@ -24,7 +23,6 @@ const SubmitComment = ({ article_id, username }) => {
 		} else {
 			postArticleComment(article_id, username, commentText)
 				.then((response) => {
-					setPostResponse(response);
 					setCommentSuccess('Your comment has been posted');
 
 					setTimeout(() => {
