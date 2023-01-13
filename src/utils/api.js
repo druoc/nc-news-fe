@@ -47,3 +47,13 @@ export const postArticleComment = (article_id, username, body) => {
 			return result.data[0];
 		});
 };
+
+export const filteredArticles = (topic) => {
+	return axios
+		.get('https://nc-news-lwqn.onrender.com/api/articles')
+		.then((result) => {
+			return result.data.articles.filter((article) => {
+				return article.topic === topic;
+			});
+		});
+};

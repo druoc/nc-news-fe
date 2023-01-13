@@ -16,7 +16,6 @@ const SubmitComment = ({ article_id, username }) => {
 	};
 
 	const handleSubmit = (e) => {
-		setCommentSuccess('Posting your comment...');
 		if (!commentText) {
 			setCommentError('Please enter a comment');
 			setTimeout(() => {
@@ -29,6 +28,7 @@ const SubmitComment = ({ article_id, username }) => {
 					setCommentSuccess('Your comment has been posted');
 					setTimeout(() => {
 						setCommentSuccess('');
+						setCommentText('');
 					}, 3000);
 				})
 				.catch((err) => {
@@ -36,6 +36,7 @@ const SubmitComment = ({ article_id, username }) => {
 						setCommentError('There was a problem posting your comment');
 						setTimeout(() => {
 							setCommentError('');
+							setCommentText('');
 						}, 3000);
 					}
 				});

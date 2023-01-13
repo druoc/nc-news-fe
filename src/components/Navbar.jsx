@@ -22,6 +22,11 @@ const Navbar = () => {
 						Articles
 					</Link>
 				</Button>
+				<Button>
+					<Link to="topics" className="nav-links">
+						Topics
+					</Link>
+				</Button>
 			</Space>
 		</nav>
 	);
