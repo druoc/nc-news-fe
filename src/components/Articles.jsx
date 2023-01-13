@@ -6,7 +6,13 @@ const Articles = ({ articles, articlesLoading }) => {
 	const { Title } = Typography;
 
 	if (articlesLoading) {
-		return <Bars />;
+		return (
+			<Space
+				style={{ display: 'flex', justifyContent: 'center', color: '#fff' }}
+			>
+				<Bars />
+			</Space>
+		);
 	}
 	return (
 		<section className="articles-section">

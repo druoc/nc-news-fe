@@ -67,7 +67,11 @@ const FullArticle = () => {
 	};
 
 	if (articleIsLoading) {
-		return <TailSpin />;
+		return (
+			<Space style={{ display: 'flex', justifyContent: 'center' }}>
+				<TailSpin />
+			</Space>
+		);
 	}
 	return (
 		<>
