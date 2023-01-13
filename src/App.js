@@ -6,6 +6,8 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Articles from './components/Articles';
 import FullArticle from './components/FullArticle';
+import Topics from './components/Topics';
+import TopicPage from './components/TopicPage';
 
 const App = () => {
 	const [articles, setArticles] = useState([]);
@@ -32,6 +34,13 @@ const App = () => {
 					}
 				/>
 				<Route path="articles/:article_id" element={<FullArticle />} />
+				<Route path="topics" element={<Topics />} />
+				<Route path="/topics/coding" element={<TopicPage topic="coding" />} />
+				<Route
+					path="/topics/football"
+					element={<TopicPage topic="football" />}
+				/>
+				<Route path="/topics/cooking" element={<TopicPage topic="cooking" />} />
 			</Routes>
 		</main>
 	);
