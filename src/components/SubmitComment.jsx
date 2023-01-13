@@ -26,6 +26,7 @@ const SubmitComment = ({ article_id, username }) => {
 				.then((response) => {
 					setPostResponse(response);
 					setCommentSuccess('Your comment has been posted');
+
 					setTimeout(() => {
 						setCommentSuccess('');
 						setCommentText('');
@@ -58,6 +59,7 @@ const SubmitComment = ({ article_id, username }) => {
 						rows={4}
 						onChange={handleInput}
 						placeholder="Enter your comment"
+						value={commentText}
 					/>
 				</Form.Item>
 				<Space>
